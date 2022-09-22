@@ -36,8 +36,13 @@ namespace GlazkiSaveApp.Views
 
         private void AddEditAgentForm_Load(object sender, EventArgs e)
         {
+            if (!String.IsNullOrWhiteSpace(agent.Phone))
+            {
+                agent.Phone = String.Concat(agent.Phone.Where(c => !Char.IsWhiteSpace(c))).Remove(0, 2);
+            }
             if (agent != null)
             {
+                
                 agentBindingSource.Add(agent);
             }
             else
@@ -67,7 +72,7 @@ namespace GlazkiSaveApp.Views
                 error.AppendLine("КПП");
             if (string.IsNullOrWhiteSpace(priorityTextBox.Text))
                 error.AppendLine("Приоритет");
-            if (phoneMaskedTextBox.Text.Length != 15)
+            if (phoneMaskedTextBox.Text.Length != 16)
                 error.AppendLine("Номер телефона");
             if (string.IsNullOrWhiteSpace(emailTextBox.Text)
                 || !emailTextBox.Text.Contains("@"))

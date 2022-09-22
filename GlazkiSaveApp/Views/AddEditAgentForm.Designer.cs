@@ -295,7 +295,7 @@
             this.phoneMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "Phone", true));
             this.phoneMaskedTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneMaskedTextBox.Location = new System.Drawing.Point(276, 207);
-            this.phoneMaskedTextBox.Mask = "+7 000 00 00 00";
+            this.phoneMaskedTextBox.Mask = "+7 000 000 00 00";
             this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(220, 33);
             this.phoneMaskedTextBox.TabIndex = 22;
