@@ -1,0 +1,10 @@
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\bin\Debug\GlazkiSaveApp.exe.config
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\bin\Debug\GlazkiSaveApp.exe
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\bin\Debug\GlazkiSaveApp.pdb
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.csproj.AssemblyReference.cache
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.Properties.Resources.resources
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.csproj.GenerateResource.cache
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.csproj.CoreCompileInputs.cache
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.exe
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.pdb
