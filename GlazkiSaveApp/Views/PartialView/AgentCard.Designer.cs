@@ -35,6 +35,7 @@
             this.percentLbl = new System.Windows.Forms.Label();
             this.titleTypeLbl = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.idAgentLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,6 +116,17 @@
             this.logoPictureBox.TabIndex = 2;
             this.logoPictureBox.TabStop = false;
             // 
+            // idAgentLbl
+            // 
+            this.idAgentLbl.AutoSize = true;
+            this.idAgentLbl.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.idAgentLbl.Location = new System.Drawing.Point(916, 111);
+            this.idAgentLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.idAgentLbl.Name = "idAgentLbl";
+            this.idAgentLbl.Size = new System.Drawing.Size(0, 38);
+            this.idAgentLbl.TabIndex = 7;
+            this.idAgentLbl.Visible = false;
+            // 
             // AgentCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,6 +138,7 @@
             this.Controls.Add(this.priorityLbl);
             this.Controls.Add(this.phoneLbl);
             this.Controls.Add(this.salesQtyLbl);
+            this.Controls.Add(this.idAgentLbl);
             this.Controls.Add(this.percentLbl);
             this.Controls.Add(this.titleTypeLbl);
             this.Name = "AgentCard";
@@ -144,6 +157,7 @@
         public System.Windows.Forms.Label phoneLbl;
         private System.Windows.Forms.Label salesQtyLbl;
         public System.Windows.Forms.Label titleTypeLbl;
-        private System.Windows.Forms.Label percentLbl;
+        public System.Windows.Forms.Label percentLbl;
+        public System.Windows.Forms.Label idAgentLbl;
     }
 }

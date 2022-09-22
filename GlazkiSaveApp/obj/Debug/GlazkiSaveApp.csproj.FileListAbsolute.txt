@@ -16,3 +16,4 @@ C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\bin\Debug\ru\EntityFramewo
 C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.MainForm.resources
 C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.Views.PartialView.AgentCard.resources
 C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.csproj.CopyComplete
+C:\Users\315\source\repos\GlazkiSaveApp\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.Views.AddEditAgentForm.resources
