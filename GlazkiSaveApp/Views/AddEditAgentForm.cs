@@ -67,12 +67,21 @@ namespace GlazkiSaveApp.Views
                 error.AppendLine("КПП");
             if (string.IsNullOrWhiteSpace(priorityTextBox.Text))
                 error.AppendLine("Приоритет");
-            if (string.IsNullOrWhiteSpace(emailTextBox.Text))
+            if (phoneMaskedTextBox.Text.Length != 15)
+                error.AppendLine("Номер телефона");
+            if (string.IsNullOrWhiteSpace(emailTextBox.Text)
+                || !emailTextBox.Text.Contains("@"))
                 error.AppendLine("Email");
             if (agentTypeIDComboBox.SelectedItem == null)
                 error.AppendLine("Тип агента");
 
 
+
+            if (error.Length != 0)
+            {
+                MessageBox.Show($"Не удалось сохранить изменения: \n{error}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (agent.ID == 0)
             {

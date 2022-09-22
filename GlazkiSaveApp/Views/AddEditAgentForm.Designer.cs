@@ -76,9 +76,9 @@
             addressLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             addressLabel.Location = new System.Drawing.Point(12, 82);
             addressLabel.Name = "addressLabel";
-            addressLabel.Size = new System.Drawing.Size(94, 24);
+            addressLabel.Size = new System.Drawing.Size(85, 24);
             addressLabel.TabIndex = 1;
-            addressLabel.Text = "Address:";
+            addressLabel.Text = "Адрес:";
             // 
             // agentTypeIDLabel
             // 
@@ -86,9 +86,9 @@
             agentTypeIDLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             agentTypeIDLabel.Location = new System.Drawing.Point(12, 145);
             agentTypeIDLabel.Name = "agentTypeIDLabel";
-            agentTypeIDLabel.Size = new System.Drawing.Size(158, 24);
+            agentTypeIDLabel.Size = new System.Drawing.Size(126, 24);
             agentTypeIDLabel.TabIndex = 3;
-            agentTypeIDLabel.Text = "Agent Type ID:";
+            agentTypeIDLabel.Text = "Тип агента:";
             // 
             // directorNameLabel
             // 
@@ -96,9 +96,9 @@
             directorNameLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             directorNameLabel.Location = new System.Drawing.Point(12, 207);
             directorNameLabel.Name = "directorNameLabel";
-            directorNameLabel.Size = new System.Drawing.Size(166, 24);
+            directorNameLabel.Size = new System.Drawing.Size(188, 24);
             directorNameLabel.TabIndex = 5;
-            directorNameLabel.Text = "Director Name:";
+            directorNameLabel.Text = "ФИО директора:";
             // 
             // emailLabel
             // 
@@ -116,9 +116,9 @@
             iNNLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             iNNLabel.Location = new System.Drawing.Point(272, 52);
             iNNLabel.Name = "iNNLabel";
-            iNNLabel.Size = new System.Drawing.Size(52, 24);
+            iNNLabel.Size = new System.Drawing.Size(59, 24);
             iNNLabel.TabIndex = 9;
-            iNNLabel.Text = "INN:";
+            iNNLabel.Text = "ИНН:";
             // 
             // kPPLabel
             // 
@@ -126,19 +126,19 @@
             kPPLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             kPPLabel.Location = new System.Drawing.Point(272, 115);
             kPPLabel.Name = "kPPLabel";
-            kPPLabel.Size = new System.Drawing.Size(51, 24);
+            kPPLabel.Size = new System.Drawing.Size(50, 24);
             kPPLabel.TabIndex = 11;
-            kPPLabel.Text = "KPP:";
+            kPPLabel.Text = "КПП";
             // 
             // logoLabel
             // 
             logoLabel.AutoSize = true;
             logoLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            logoLabel.Location = new System.Drawing.Point(547, 49);
+            logoLabel.Location = new System.Drawing.Point(575, 19);
             logoLabel.Name = "logoLabel";
-            logoLabel.Size = new System.Drawing.Size(67, 24);
+            logoLabel.Size = new System.Drawing.Size(100, 24);
             logoLabel.TabIndex = 13;
-            logoLabel.Text = "Logo:";
+            logoLabel.Text = "Логотип:";
             // 
             // priorityLabel
             // 
@@ -146,9 +146,9 @@
             priorityLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             priorityLabel.Location = new System.Drawing.Point(272, 240);
             priorityLabel.Name = "priorityLabel";
-            priorityLabel.Size = new System.Drawing.Size(77, 24);
+            priorityLabel.Size = new System.Drawing.Size(127, 24);
             priorityLabel.TabIndex = 17;
-            priorityLabel.Text = "Priority:";
+            priorityLabel.Text = "Приоритет:";
             // 
             // titleLabel
             // 
@@ -156,9 +156,9 @@
             titleLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             titleLabel.Location = new System.Drawing.Point(12, 19);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new System.Drawing.Size(52, 24);
+            titleLabel.Size = new System.Drawing.Size(179, 24);
             titleLabel.TabIndex = 19;
-            titleLabel.Text = "Title:";
+            titleLabel.Text = "Наименование:";
             // 
             // phoneLabel
             // 
@@ -166,9 +166,9 @@
             phoneLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             phoneLabel.Location = new System.Drawing.Point(272, 180);
             phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new System.Drawing.Size(81, 24);
+            phoneLabel.Size = new System.Drawing.Size(202, 24);
             phoneLabel.TabIndex = 21;
-            phoneLabel.Text = "Phone:";
+            phoneLabel.Text = "Номер телефона";
             // 
             // addressTextBox
             // 
@@ -223,9 +223,11 @@
             // 
             this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.agentBindingSource, "Logo", true));
-            this.logoPictureBox.Location = new System.Drawing.Point(551, 79);
+            this.logoPictureBox.Image = global::GlazkiSaveApp.Properties.Resources.picture;
+            this.logoPictureBox.Location = new System.Drawing.Point(579, 49);
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.Size = new System.Drawing.Size(250, 250);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoPictureBox.TabIndex = 14;
             this.logoPictureBox.TabStop = false;
             // 
@@ -253,7 +255,7 @@
             this.changeLogoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeLogoBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeLogoBtn.ForeColor = System.Drawing.Color.White;
-            this.changeLogoBtn.Location = new System.Drawing.Point(551, 335);
+            this.changeLogoBtn.Location = new System.Drawing.Point(579, 305);
             this.changeLogoBtn.Name = "changeLogoBtn";
             this.changeLogoBtn.Size = new System.Drawing.Size(250, 42);
             this.changeLogoBtn.TabIndex = 21;
