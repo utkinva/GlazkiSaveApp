@@ -44,10 +44,7 @@
             this.agentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.directorNameTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.iNNTextBox = new System.Windows.Forms.TextBox();
-            this.kPPTextBox = new System.Windows.Forms.TextBox();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
-            this.priorityTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.changeLogoBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -55,6 +52,9 @@
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.agentTypeIDComboBox = new System.Windows.Forms.ComboBox();
             this.agentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.priorityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.iNNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.kPPMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             addressLabel = new System.Windows.Forms.Label();
             agentTypeIDLabel = new System.Windows.Forms.Label();
             directorNameLabel = new System.Windows.Forms.Label();
@@ -68,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.agentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // addressLabel
@@ -201,24 +202,6 @@
             this.emailTextBox.Size = new System.Drawing.Size(220, 33);
             this.emailTextBox.TabIndex = 8;
             // 
-            // iNNTextBox
-            // 
-            this.iNNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "INN", true));
-            this.iNNTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.iNNTextBox.Location = new System.Drawing.Point(276, 79);
-            this.iNNTextBox.Name = "iNNTextBox";
-            this.iNNTextBox.Size = new System.Drawing.Size(220, 33);
-            this.iNNTextBox.TabIndex = 10;
-            // 
-            // kPPTextBox
-            // 
-            this.kPPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "KPP", true));
-            this.kPPTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.kPPTextBox.Location = new System.Drawing.Point(276, 141);
-            this.kPPTextBox.Name = "kPPTextBox";
-            this.kPPTextBox.Size = new System.Drawing.Size(220, 33);
-            this.kPPTextBox.TabIndex = 12;
-            // 
             // logoPictureBox
             // 
             this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -230,15 +213,6 @@
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoPictureBox.TabIndex = 14;
             this.logoPictureBox.TabStop = false;
-            // 
-            // priorityTextBox
-            // 
-            this.priorityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "Priority", true));
-            this.priorityTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.priorityTextBox.Location = new System.Drawing.Point(276, 267);
-            this.priorityTextBox.Name = "priorityTextBox";
-            this.priorityTextBox.Size = new System.Drawing.Size(220, 33);
-            this.priorityTextBox.TabIndex = 18;
             // 
             // titleTextBox
             // 
@@ -261,6 +235,7 @@
             this.changeLogoBtn.TabIndex = 21;
             this.changeLogoBtn.Text = "Выбрать";
             this.changeLogoBtn.UseVisualStyleBackColor = false;
+            this.changeLogoBtn.Click += new System.EventHandler(this.changeLogoBtn_Click);
             // 
             // saveBtn
             // 
@@ -318,6 +293,35 @@
             // 
             this.agentTypeBindingSource.DataSource = typeof(GlazkiSaveApp.Models.AgentType);
             // 
+            // priorityNumericUpDown
+            // 
+            this.priorityNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.agentBindingSource, "Priority", true));
+            this.priorityNumericUpDown.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.priorityNumericUpDown.Location = new System.Drawing.Point(276, 267);
+            this.priorityNumericUpDown.Name = "priorityNumericUpDown";
+            this.priorityNumericUpDown.Size = new System.Drawing.Size(217, 33);
+            this.priorityNumericUpDown.TabIndex = 24;
+            // 
+            // iNNMaskedTextBox
+            // 
+            this.iNNMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "INN", true));
+            this.iNNMaskedTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.iNNMaskedTextBox.Location = new System.Drawing.Point(276, 79);
+            this.iNNMaskedTextBox.Mask = "000000000000";
+            this.iNNMaskedTextBox.Name = "iNNMaskedTextBox";
+            this.iNNMaskedTextBox.Size = new System.Drawing.Size(220, 33);
+            this.iNNMaskedTextBox.TabIndex = 25;
+            // 
+            // kPPMaskedTextBox
+            // 
+            this.kPPMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "KPP", true));
+            this.kPPMaskedTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.kPPMaskedTextBox.Location = new System.Drawing.Point(276, 142);
+            this.kPPMaskedTextBox.Mask = "000000000";
+            this.kPPMaskedTextBox.Name = "kPPMaskedTextBox";
+            this.kPPMaskedTextBox.Size = new System.Drawing.Size(220, 33);
+            this.kPPMaskedTextBox.TabIndex = 26;
+            // 
             // AddEditAgentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +329,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(849, 558);
             this.ControlBox = false;
+            this.Controls.Add(this.kPPMaskedTextBox);
+            this.Controls.Add(this.iNNMaskedTextBox);
+            this.Controls.Add(this.priorityNumericUpDown);
             this.Controls.Add(phoneLabel);
             this.Controls.Add(this.phoneMaskedTextBox);
             this.Controls.Add(this.cancelBtn);
@@ -339,13 +346,10 @@
             this.Controls.Add(emailLabel);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(iNNLabel);
-            this.Controls.Add(this.iNNTextBox);
             this.Controls.Add(kPPLabel);
-            this.Controls.Add(this.kPPTextBox);
             this.Controls.Add(logoLabel);
             this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(priorityLabel);
-            this.Controls.Add(this.priorityTextBox);
             this.Controls.Add(titleLabel);
             this.Controls.Add(this.titleTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -356,6 +360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.agentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,10 +370,7 @@
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox directorNameTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox iNNTextBox;
-        private System.Windows.Forms.TextBox kPPTextBox;
         private System.Windows.Forms.PictureBox logoPictureBox;
-        private System.Windows.Forms.TextBox priorityTextBox;
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.Button changeLogoBtn;
         private System.Windows.Forms.Button saveBtn;
@@ -377,5 +379,8 @@
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
         private System.Windows.Forms.ComboBox agentTypeIDComboBox;
         private System.Windows.Forms.BindingSource agentTypeBindingSource;
+        private System.Windows.Forms.NumericUpDown priorityNumericUpDown;
+        private System.Windows.Forms.MaskedTextBox iNNMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox kPPMaskedTextBox;
     }
 }

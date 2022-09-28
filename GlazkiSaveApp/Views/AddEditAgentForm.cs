@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +22,8 @@ namespace GlazkiSaveApp.Views
         {
             InitializeComponent();
 
+            priorityNumericUpDown.Maximum = Int32.MaxValue;
+
             agentTypeBindingSource.DataSource = DBContext.Context.AgentType.ToList();
 
             if (current != null)
@@ -29,7 +33,10 @@ namespace GlazkiSaveApp.Views
             }
             else
             {
-                agent = new Agent();
+                agent = new Agent()
+                {
+                    Logo = @"..\..\Resources\picture.png"
+                };
                 this.Text = "Добавить нового агента";
             }
         }
@@ -42,8 +49,15 @@ namespace GlazkiSaveApp.Views
             }
             if (agent != null)
             {
-                
                 agentBindingSource.Add(agent);
+                if (agent.Logo != null)
+                {
+                    logoPictureBox.ImageLocation = agent.Logo;
+                }
+                else
+                {
+                    logoPictureBox.ImageLocation = @"..\..\Resources\picture.png";
+                }
             }
             else
             {
@@ -66,12 +80,10 @@ namespace GlazkiSaveApp.Views
                 error.AppendLine("Наименование");
             if (string.IsNullOrWhiteSpace(addressTextBox.Text))
                 error.AppendLine("Адрес");
-            if (string.IsNullOrWhiteSpace(iNNTextBox.Text))
+            if (iNNMaskedTextBox.Text.Length != 12)
                 error.AppendLine("ИНН");
-            if (string.IsNullOrWhiteSpace(kPPTextBox.Text))
+            if (kPPMaskedTextBox.Text.Length != 9)
                 error.AppendLine("КПП");
-            if (string.IsNullOrWhiteSpace(priorityTextBox.Text))
-                error.AppendLine("Приоритет");
             if (phoneMaskedTextBox.Text.Length != 16)
                 error.AppendLine("Номер телефона");
             if (string.IsNullOrWhiteSpace(emailTextBox.Text)
@@ -79,8 +91,6 @@ namespace GlazkiSaveApp.Views
                 error.AppendLine("Email");
             if (agentTypeIDComboBox.SelectedItem == null)
                 error.AppendLine("Тип агента");
-
-
 
             if (error.Length != 0)
             {
@@ -104,6 +114,23 @@ namespace GlazkiSaveApp.Views
                 MessageBox.Show(ex.Message);
                 return;
             }
+        }
+
+        private void changeLogoBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.InitialDirectory = Environment.CurrentDirectory + @"\agents\";
+            DialogResult dr = dialog.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                string file = dialog.FileName;
+                int num = file.IndexOf(@"agents");
+                file = file.Substring(num);
+
+                logoPictureBox.Image = Image.FromFile(file);
+                ((Agent)agentBindingSource.Current).Logo = file;
+            }
+
         }
     }
 }
