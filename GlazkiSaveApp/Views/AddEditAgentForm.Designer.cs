@@ -55,6 +55,15 @@
             this.priorityNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.iNNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.kPPMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productSaleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addSaleBtn = new System.Windows.Forms.Button();
+            this.deleteSaleBtn = new System.Windows.Forms.Button();
             addressLabel = new System.Windows.Forms.Label();
             agentTypeIDLabel = new System.Windows.Forms.Label();
             directorNameLabel = new System.Windows.Forms.Label();
@@ -69,6 +78,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productSaleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // addressLabel
@@ -135,7 +147,7 @@
             // 
             logoLabel.AutoSize = true;
             logoLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            logoLabel.Location = new System.Drawing.Point(575, 19);
+            logoLabel.Location = new System.Drawing.Point(513, 14);
             logoLabel.Name = "logoLabel";
             logoLabel.Size = new System.Drawing.Size(100, 24);
             logoLabel.TabIndex = 13;
@@ -207,7 +219,7 @@
             this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.logoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.agentBindingSource, "Logo", true));
             this.logoPictureBox.Image = global::GlazkiSaveApp.Properties.Resources.picture;
-            this.logoPictureBox.Location = new System.Drawing.Point(579, 49);
+            this.logoPictureBox.Location = new System.Drawing.Point(517, 44);
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.Size = new System.Drawing.Size(250, 250);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -229,7 +241,7 @@
             this.changeLogoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeLogoBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changeLogoBtn.ForeColor = System.Drawing.Color.White;
-            this.changeLogoBtn.Location = new System.Drawing.Point(579, 305);
+            this.changeLogoBtn.Location = new System.Drawing.Point(517, 300);
             this.changeLogoBtn.Name = "changeLogoBtn";
             this.changeLogoBtn.Size = new System.Drawing.Size(250, 42);
             this.changeLogoBtn.TabIndex = 21;
@@ -257,7 +269,7 @@
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cancelBtn.ForeColor = System.Drawing.Color.White;
-            this.cancelBtn.Location = new System.Drawing.Point(579, 496);
+            this.cancelBtn.Location = new System.Drawing.Point(996, 496);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(250, 42);
             this.cancelBtn.TabIndex = 21;
@@ -307,7 +319,7 @@
             this.iNNMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "INN", true));
             this.iNNMaskedTextBox.Font = new System.Drawing.Font("Century Gothic", 15.75F);
             this.iNNMaskedTextBox.Location = new System.Drawing.Point(276, 79);
-            this.iNNMaskedTextBox.Mask = "000000000000";
+            this.iNNMaskedTextBox.Mask = "0000000000";
             this.iNNMaskedTextBox.Name = "iNNMaskedTextBox";
             this.iNNMaskedTextBox.Size = new System.Drawing.Size(220, 33);
             this.iNNMaskedTextBox.TabIndex = 25;
@@ -322,19 +334,121 @@
             this.kPPMaskedTextBox.Size = new System.Drawing.Size(220, 33);
             this.kPPMaskedTextBox.TabIndex = 26;
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(117)))), ((int)(((byte)(238)))));
+            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteBtn.ForeColor = System.Drawing.Color.White;
+            this.deleteBtn.Location = new System.Drawing.Point(268, 496);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(250, 42);
+            this.deleteBtn.TabIndex = 21;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productIDDataGridViewTextBoxColumn,
+            this.productCountDataGridViewTextBoxColumn,
+            this.saleDateDataGridViewTextBoxColumn});
+            this.dataGridView.DataSource = this.productSaleBindingSource;
+            this.dataGridView.Location = new System.Drawing.Point(773, 19);
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(473, 323);
+            this.dataGridView.TabIndex = 27;
+            // 
+            // productIDDataGridViewTextBoxColumn
+            // 
+            this.productIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.DataSource = this.productBindingSource;
+            this.productIDDataGridViewTextBoxColumn.DisplayMember = "Title";
+            this.productIDDataGridViewTextBoxColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "Наименование";
+            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productIDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.productIDDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.productIDDataGridViewTextBoxColumn.ValueMember = "ID";
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(GlazkiSaveApp.Models.Product);
+            // 
+            // productCountDataGridViewTextBoxColumn
+            // 
+            this.productCountDataGridViewTextBoxColumn.DataPropertyName = "ProductCount";
+            this.productCountDataGridViewTextBoxColumn.HeaderText = "Кол-во";
+            this.productCountDataGridViewTextBoxColumn.MinimumWidth = 100;
+            this.productCountDataGridViewTextBoxColumn.Name = "productCountDataGridViewTextBoxColumn";
+            this.productCountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // saleDateDataGridViewTextBoxColumn
+            // 
+            this.saleDateDataGridViewTextBoxColumn.DataPropertyName = "SaleDate";
+            this.saleDateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.saleDateDataGridViewTextBoxColumn.MinimumWidth = 100;
+            this.saleDateDataGridViewTextBoxColumn.Name = "saleDateDataGridViewTextBoxColumn";
+            this.saleDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productSaleBindingSource
+            // 
+            this.productSaleBindingSource.DataSource = typeof(GlazkiSaveApp.Models.ProductSale);
+            // 
+            // addSaleBtn
+            // 
+            this.addSaleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(117)))), ((int)(((byte)(238)))));
+            this.addSaleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addSaleBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addSaleBtn.ForeColor = System.Drawing.Color.White;
+            this.addSaleBtn.Location = new System.Drawing.Point(773, 348);
+            this.addSaleBtn.Name = "addSaleBtn";
+            this.addSaleBtn.Size = new System.Drawing.Size(212, 42);
+            this.addSaleBtn.TabIndex = 21;
+            this.addSaleBtn.Text = "+";
+            this.addSaleBtn.UseVisualStyleBackColor = false;
+            // 
+            // deleteSaleBtn
+            // 
+            this.deleteSaleBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(117)))), ((int)(((byte)(238)))));
+            this.deleteSaleBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteSaleBtn.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteSaleBtn.ForeColor = System.Drawing.Color.White;
+            this.deleteSaleBtn.Location = new System.Drawing.Point(1034, 348);
+            this.deleteSaleBtn.Name = "deleteSaleBtn";
+            this.deleteSaleBtn.Size = new System.Drawing.Size(212, 42);
+            this.deleteSaleBtn.TabIndex = 21;
+            this.deleteSaleBtn.Text = "-";
+            this.deleteSaleBtn.UseVisualStyleBackColor = false;
+            this.deleteSaleBtn.Click += new System.EventHandler(this.deleteSaleBtn_Click);
+            // 
             // AddEditAgentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(849, 558);
+            this.ClientSize = new System.Drawing.Size(1254, 541);
             this.ControlBox = false;
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.kPPMaskedTextBox);
             this.Controls.Add(this.iNNMaskedTextBox);
             this.Controls.Add(this.priorityNumericUpDown);
             this.Controls.Add(phoneLabel);
             this.Controls.Add(this.phoneMaskedTextBox);
+            this.Controls.Add(this.deleteSaleBtn);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.addSaleBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.changeLogoBtn);
             this.Controls.Add(addressLabel);
@@ -361,6 +475,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productSaleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,5 +499,14 @@
         private System.Windows.Forms.NumericUpDown priorityNumericUpDown;
         private System.Windows.Forms.MaskedTextBox iNNMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox kPPMaskedTextBox;
+        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewComboBoxColumn productIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saleDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource productSaleBindingSource;
+        private System.Windows.Forms.Button addSaleBtn;
+        private System.Windows.Forms.Button deleteSaleBtn;
     }
 }

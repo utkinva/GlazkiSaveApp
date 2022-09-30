@@ -18,6 +18,9 @@ namespace GlazkiSaveApp
     {
         public static List<Agent> agents = new List<Agent>();
         public static List<AgentCard> selectedAgents = new List<AgentCard>();
+        List<AgentType> agentTypes = DBContext.Context.AgentType.ToList();
+        int nPage = 0;
+        int nPageMax = 0;
 
         public MainForm()
         {
@@ -25,19 +28,27 @@ namespace GlazkiSaveApp
 
             agents = DBContext.Context.Agent.ToList();
 
-            GenerateAgentCardList(agents);
+            ApplyFilters();
 
-            List<AgentType> agentTypes = DBContext.Context.AgentType.ToList();
             agentTypes.Insert(0, new AgentType { Title = "Все типы" });
-
             filterComboBox.DataSource = agentTypes;
 
             filterComboBox.SelectedIndex = 0;
             sortComboBox.SelectedIndex = 0;
         }
-
-        private void GenerateAgentCardList(List<Agent> agents)
+        /// <summary>
+        /// Метод генерации карточек агентов
+        /// </summary>
+        /// <param name="agents">Список агентов в таблице базы данных</param>
+        /// <param name="nPage">Текущая страница</param>
+        /// <param name="pageSize">Количество элементов на странице</param>
+        private void GenerateAgentCardList(List<Agent> agents, int nPage, int pageSize)
         {
+            nPageMax = ((int)agents.Count / 10 < 1) ? 1 : (int)agents.Count / 10;
+            agents = agents.Skip(nPage * pageSize).Take(pageSize).ToList();
+            pagesLbl.Text = $"{nPage + 1} из {nPageMax}";
+
+            agentCardsLayout.Controls.Clear();
             foreach (var agent in agents)
             {
                 AgentCard agentCard = new AgentCard();
@@ -49,7 +60,7 @@ namespace GlazkiSaveApp
                 agentCard.DoubleClick += AgentCard_DoubleClick;
             }
         }
-
+        #region События нажатий на карточки агентов
         private void AgentCard_DoubleClick(object sender, EventArgs e)
         {
             AgentCard card = sender as AgentCard;
@@ -78,24 +89,78 @@ namespace GlazkiSaveApp
                 card.BackColor = Color.White;
                 selectedAgents.Remove(card);
             }
+        }
+        #endregion
 
-            if (selectedAgents.Count > 1)
-                addAgentBtn.Visible = false;
-            else
-                addAgentBtn.Visible = true;
+        #region События нажатий кнопок на форме
+        private void addAgentBtn_Click(object sender, EventArgs e)
+        {
+            AddEditAgentForm add = new AddEditAgentForm(null);
+            DialogResult dialogResult = add.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                ApplyFilters();
+                selectedAgents.Clear();
+            }
+        }
+        private void changePriorityBtn_Click(object sender, EventArgs e)
+        {
+            if (selectedAgents.Count == 0)
+            {
+                MessageBox.Show("Необходимо выбрать хотя бы одного агента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ChangePriorityForm change = new ChangePriorityForm(selectedAgents);
+            DialogResult dr = change.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                selectedAgents.Clear();
+                ApplyFilters();
+            }
         }
 
+        private void nextPageLbl_Click(object sender, EventArgs e)
+        {
+            if (nPage + 1 < nPageMax)
+            {
+                nPage++;
+                GenerateAgentCardList(agents, nPage, 10);
+            }
+        }
+
+        private void prevPageLbl_Click(object sender, EventArgs e)
+        {
+            if (nPage > 0)
+            {
+                nPage--;
+                GenerateAgentCardList(agents, nPage, 10);
+            }
+        }
+        #endregion
+
+        #region Поиск, сортировка и фильтрация
         public void ApplyFilters()
         {
-            AgentCard card = new AgentCard();
-
             var updatedList = DBContext.Context.Agent.ToList();
-
+            #region Поиск
+            if (string.IsNullOrWhiteSpace(searchTxtBox.Text)
+                && searchTxtBox.Text != "Введите для поиска")
+            {
+                updatedList = updatedList
+                    .Where(x => x.Title.ToLower().Contains(searchTxtBox.Text.ToLower())
+                    || x.Email.ToLower().Contains(searchTxtBox.Text.ToLower())
+                    || x.Phone.ToLower().Contains(searchTxtBox.Text.ToLower()))
+                    .ToList();
+            }
+            #endregion
+            #region Фильтрация
             if (filterComboBox.SelectedIndex > 0)
             {
                 updatedList = updatedList.Where(x => x.AgentType.ID == filterComboBox.SelectedIndex).ToList();
             }
-
+            #endregion
+            #region Сортировка
             if (sortComboBox.SelectedIndex > 0)
             {
                 switch (sortComboBox.SelectedIndex)
@@ -120,34 +185,16 @@ namespace GlazkiSaveApp
                         break;
                 }
             }
-
-            if (string.IsNullOrWhiteSpace(searchTxtBox.Text))
-            {
-                updatedList = updatedList
-                    .Where(x => x.Title.ToLower().Contains(searchTxtBox.Text.ToLower())
-                    || x.Email.ToLower().Contains(searchTxtBox.Text.ToLower())
-                    || x.Phone.ToLower().Contains(searchTxtBox.Text.ToLower()))
-                    .ToList();
-            }
-
-            if (agentCardsLayout.Controls.Count > 0)
-            {
-                agentCardsLayout.Controls.Clear();
-            }
-
-            GenerateAgentCardList(updatedList);
+            #endregion
+            nPage = 0;
+            selectedAgents.Clear();
+            GenerateAgentCardList(updatedList, nPage, 10);
         }
-
-        private void searchTxtBox_TextChanged(object sender, EventArgs e)
-        {
-            if (searchTxtBox.Text != "Введите для поиска"
-                && !string.IsNullOrWhiteSpace(searchTxtBox.Text))
-            {
-                agentCardsLayout.Controls.Clear();
-                ApplyFilters();
-            }
-        }
-
+        /// <summary>
+        /// Событие для вызова метода сортировки, поиска и фильтрации
+        /// </summary>
+        private void TriggerFilters(object sender, EventArgs e) => ApplyFilters();
+        #endregion
         private void searchTxtBox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(searchTxtBox.Text))
@@ -155,39 +202,12 @@ namespace GlazkiSaveApp
                 searchTxtBox.Text = "Введите для поиска";
             }
         }
-
         private void searchTxtBox_Enter(object sender, EventArgs e)
         {
             if (searchTxtBox.Text == "Введите для поиска")
             {
                 searchTxtBox.Text = string.Empty;
             }
-        }
-
-        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ApplyFilters();
-        }
-
-        private void ascDescCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            ApplyFilters();
-        }
-
-        private void addAgentBtn_Click(object sender, EventArgs e)
-        {
-            AddEditAgentForm add = new AddEditAgentForm(null);
-            DialogResult dialogResult = add.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                ApplyFilters();
-                selectedAgents.Clear();
-            }
-        }
-
-        private void filterComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ApplyFilters();
         }
     }
 }

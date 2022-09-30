@@ -20,27 +20,15 @@ namespace GlazkiSaveApp.Views.PartialView
 
         public void GenerateAgentData(Agent agent)
         {
-            int salesQtyLastYear = 0;
-
             idAgentLbl.Text = agent.ID.ToString();
             logoPictureBox.ImageLocation = agent.Logo;
             titleTypeLbl.Text = $"{agent.AgentType.Title} | {agent.Title}";
             phoneLbl.Text = agent.Phone;
             priorityValueLbl.Text = agent.Priority.ToString();
             percentLbl.Text = $"{agent.Discount}%";
+            salesQtyLbl.Text = $"{agent.SalesQtyPerLastYear} продаж за год";
 
-            //  продажи за последний год
-            foreach (ProductSale sale in agent.ProductSale)
-            {
-                if (sale.SaleDate.Year == 2019)
-                {
-                    salesQtyLastYear += sale.ProductCount;
-                }
-            }
-
-            salesQtyLbl.Text = $"{salesQtyLastYear} продаж за год";
-
-            if (int.Parse(percentLbl.Text.Remove(percentLbl.Text.Length - 1)) >= 25)
+            if (agent.Discount >= 25)
             {
                 titleTypeLbl.ForeColor = Color.LightGreen;
                 percentLbl.ForeColor = Color.LightGreen;

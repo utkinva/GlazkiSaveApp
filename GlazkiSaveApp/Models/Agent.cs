@@ -58,43 +58,45 @@ namespace GlazkiSaveApp.Models
                 int discount;
                 decimal salesSum = 0;
 
-
-                // общая сумма продаж
                 foreach (ProductSale sale in ProductSale)
                 {
                     salesQtyAllPeriod += sale.ProductCount;
                     salesSum += salesQtyAllPeriod * sale.Product.MinCostForAgent;
                 }
 
-
-
-
-
                 if (salesSum < 10000)
-                {
                     discount = 0;
-                }
                 else if (salesSum >= 10000 && salesSum <= 50000)
-                {
                     discount = 5;
-                }
                 else if (salesSum > 50000 && salesSum <= 150000)
-                {
                     discount = 10;
-                }
                 else if (salesSum > 150000 && salesSum <= 500000)
-                {
                     discount = 20;
-                }
                 else
-                {
                     discount = 25;
-                }
 
                 return discount;
             }
         }
+        public int SalesQtyPerLastYear
+        {
+            get
+            {
+                int salesQtyLastYear = 0;
 
+                foreach (ProductSale sale in ProductSale)
+                {
+                    if (sale.SaleDate.Year == DateTime.Now.Year
+                        || (sale.SaleDate.Year == DateTime.Now.Year - 1
+                        && sale.SaleDate.Month <= DateTime.Now.Month
+                        && sale.SaleDate.Day <= DateTime.Now.Day))
+                    {
+                        salesQtyLastYear += sale.ProductCount;
+                    }
+                }
+                return salesQtyLastYear;
+            }
+        }
         public virtual AgentType AgentType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
