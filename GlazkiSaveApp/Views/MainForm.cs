@@ -144,7 +144,7 @@ namespace GlazkiSaveApp
         {
             var updatedList = DBContext.Context.Agent.ToList();
             #region Поиск
-            if (string.IsNullOrWhiteSpace(searchTxtBox.Text)
+            if (!string.IsNullOrWhiteSpace(searchTxtBox.Text)
                 && searchTxtBox.Text != "Введите для поиска")
             {
                 updatedList = updatedList
