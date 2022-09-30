@@ -34,6 +34,9 @@ namespace GlazkiSaveApp.Views
                     Logo = @"..\..\Resources\picture.png"
                 };
                 this.Text = "Добавить нового агента";
+                addSaleBtn.Enabled = false;
+                deleteSaleBtn.Enabled = false;
+                deleteBtn.Enabled = false;
             }
 
             productBindingSource.DataSource = DBContext.Context.Product.ToList();
@@ -188,6 +191,16 @@ namespace GlazkiSaveApp.Views
                     MessageBox.Show(ex.Message);
                     return;
                 }
+            }
+        }
+
+        private void addSaleBtn_Click(object sender, EventArgs e)
+        {
+            AddNewSaleForm sale = new AddNewSaleForm(agent);
+            DialogResult dr = sale.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                productSaleBindingSource.DataSource = GetSalesList();
             }
         }
     }

@@ -32,11 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.titleTypeLbl = new System.Windows.Forms.Label();
-            this.ascDescCheck = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.filterComboBox = new System.Windows.Forms.ComboBox();
             this.agentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sortComboBox = new System.Windows.Forms.ComboBox();
+            this.ascDescCheck = new System.Windows.Forms.CheckBox();
             this.searchTxtBox = new System.Windows.Forms.TextBox();
+            this.sortComboBox = new System.Windows.Forms.ComboBox();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.FooterPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,6 +50,7 @@
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.agentCardsLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.HeaderPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.FooterPanel.SuspendLayout();
@@ -61,39 +63,36 @@
             this.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(233)))), ((int)(((byte)(249)))));
             this.HeaderPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.HeaderPanel.Controls.Add(this.titleTypeLbl);
-            this.HeaderPanel.Controls.Add(this.ascDescCheck);
-            this.HeaderPanel.Controls.Add(this.filterComboBox);
-            this.HeaderPanel.Controls.Add(this.sortComboBox);
-            this.HeaderPanel.Controls.Add(this.searchTxtBox);
+            this.HeaderPanel.Controls.Add(this.panel2);
             this.HeaderPanel.Controls.Add(this.logoPictureBox);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(1216, 150);
+            this.HeaderPanel.Size = new System.Drawing.Size(1263, 150);
             this.HeaderPanel.TabIndex = 0;
             // 
             // titleTypeLbl
             // 
             this.titleTypeLbl.AutoSize = true;
             this.titleTypeLbl.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.titleTypeLbl.Location = new System.Drawing.Point(148, 8);
+            this.titleTypeLbl.Location = new System.Drawing.Point(148, 3);
             this.titleTypeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.titleTypeLbl.Name = "titleTypeLbl";
             this.titleTypeLbl.Size = new System.Drawing.Size(393, 78);
             this.titleTypeLbl.TabIndex = 9;
             this.titleTypeLbl.Text = "Glazki Save";
             // 
-            // ascDescCheck
+            // panel2
             // 
-            this.ascDescCheck.AutoSize = true;
-            this.ascDescCheck.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ascDescCheck.Location = new System.Drawing.Point(825, 112);
-            this.ascDescCheck.Name = "ascDescCheck";
-            this.ascDescCheck.Size = new System.Drawing.Size(170, 28);
-            this.ascDescCheck.TabIndex = 2;
-            this.ascDescCheck.Text = "По убыванию";
-            this.ascDescCheck.UseVisualStyleBackColor = true;
-            this.ascDescCheck.CheckedChanged += new System.EventHandler(this.TriggerFilters);
+            this.panel2.Controls.Add(this.filterComboBox);
+            this.panel2.Controls.Add(this.ascDescCheck);
+            this.panel2.Controls.Add(this.searchTxtBox);
+            this.panel2.Controls.Add(this.sortComboBox);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(177, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1084, 148);
+            this.panel2.TabIndex = 10;
             // 
             // filterComboBox
             // 
@@ -102,16 +101,41 @@
             this.filterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterComboBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.filterComboBox.FormattingEnabled = true;
-            this.filterComboBox.Location = new System.Drawing.Point(1001, 111);
+            this.filterComboBox.Location = new System.Drawing.Point(876, 111);
             this.filterComboBox.Name = "filterComboBox";
             this.filterComboBox.Size = new System.Drawing.Size(202, 32);
-            this.filterComboBox.TabIndex = 1;
+            this.filterComboBox.TabIndex = 3;
             this.filterComboBox.ValueMember = "ID";
             this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.TriggerFilters);
             // 
             // agentTypeBindingSource
             // 
             this.agentTypeBindingSource.DataSource = typeof(GlazkiSaveApp.Models.AgentType);
+            // 
+            // ascDescCheck
+            // 
+            this.ascDescCheck.AutoSize = true;
+            this.ascDescCheck.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ascDescCheck.Location = new System.Drawing.Point(700, 112);
+            this.ascDescCheck.Name = "ascDescCheck";
+            this.ascDescCheck.Size = new System.Drawing.Size(170, 28);
+            this.ascDescCheck.TabIndex = 2;
+            this.ascDescCheck.Text = "По убыванию";
+            this.ascDescCheck.UseVisualStyleBackColor = true;
+            this.ascDescCheck.CheckedChanged += new System.EventHandler(this.TriggerFilters);
+            // 
+            // searchTxtBox
+            // 
+            this.searchTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchTxtBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchTxtBox.Location = new System.Drawing.Point(24, 110);
+            this.searchTxtBox.Name = "searchTxtBox";
+            this.searchTxtBox.Size = new System.Drawing.Size(426, 33);
+            this.searchTxtBox.TabIndex = 1;
+            this.searchTxtBox.Text = "Введите для поиска";
+            this.searchTxtBox.TextChanged += new System.EventHandler(this.TriggerFilters);
+            this.searchTxtBox.Enter += new System.EventHandler(this.searchTxtBox_Enter);
+            this.searchTxtBox.Leave += new System.EventHandler(this.searchTxtBox_Leave);
             // 
             // sortComboBox
             // 
@@ -123,24 +147,11 @@
             "Наименование",
             "Размер скидки",
             "Приоритет"});
-            this.sortComboBox.Location = new System.Drawing.Point(581, 110);
+            this.sortComboBox.Location = new System.Drawing.Point(456, 110);
             this.sortComboBox.Name = "sortComboBox";
             this.sortComboBox.Size = new System.Drawing.Size(238, 32);
             this.sortComboBox.TabIndex = 0;
             this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.TriggerFilters);
-            // 
-            // searchTxtBox
-            // 
-            this.searchTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.searchTxtBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchTxtBox.Location = new System.Drawing.Point(149, 110);
-            this.searchTxtBox.Name = "searchTxtBox";
-            this.searchTxtBox.Size = new System.Drawing.Size(426, 33);
-            this.searchTxtBox.TabIndex = 1;
-            this.searchTxtBox.Text = "Введите для поиска";
-            this.searchTxtBox.TextChanged += new System.EventHandler(this.TriggerFilters);
-            this.searchTxtBox.Enter += new System.EventHandler(this.searchTxtBox_Enter);
-            this.searchTxtBox.Leave += new System.EventHandler(this.searchTxtBox_Leave);
             // 
             // logoPictureBox
             // 
@@ -162,7 +173,7 @@
             this.FooterPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.FooterPanel.Location = new System.Drawing.Point(0, 734);
             this.FooterPanel.Name = "FooterPanel";
-            this.FooterPanel.Size = new System.Drawing.Size(1216, 54);
+            this.FooterPanel.Size = new System.Drawing.Size(1263, 54);
             this.FooterPanel.TabIndex = 1;
             // 
             // panel1
@@ -172,7 +183,7 @@
             this.panel1.Controls.Add(this.prevPageLbl);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(907, 0);
+            this.panel1.Location = new System.Drawing.Point(954, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(307, 52);
             this.panel1.TabIndex = 12;
@@ -185,7 +196,7 @@
             this.nextPageLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nextPageLbl.Name = "nextPageLbl";
             this.nextPageLbl.Size = new System.Drawing.Size(23, 24);
-            this.nextPageLbl.TabIndex = 10;
+            this.nextPageLbl.TabIndex = 7;
             this.nextPageLbl.Text = ">";
             this.nextPageLbl.Click += new System.EventHandler(this.nextPageLbl_Click);
             // 
@@ -208,7 +219,7 @@
             this.prevPageLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.prevPageLbl.Name = "prevPageLbl";
             this.prevPageLbl.Size = new System.Drawing.Size(23, 24);
-            this.prevPageLbl.TabIndex = 10;
+            this.prevPageLbl.TabIndex = 6;
             this.prevPageLbl.Text = "<";
             this.prevPageLbl.Click += new System.EventHandler(this.prevPageLbl_Click);
             // 
@@ -232,7 +243,7 @@
             this.changePriorityBtn.Location = new System.Drawing.Point(217, 5);
             this.changePriorityBtn.Name = "changePriorityBtn";
             this.changePriorityBtn.Size = new System.Drawing.Size(324, 42);
-            this.changePriorityBtn.TabIndex = 0;
+            this.changePriorityBtn.TabIndex = 5;
             this.changePriorityBtn.Text = "Изменить приоритет на...";
             this.changePriorityBtn.UseVisualStyleBackColor = false;
             this.changePriorityBtn.Click += new System.EventHandler(this.changePriorityBtn_Click);
@@ -246,7 +257,7 @@
             this.addAgentBtn.Location = new System.Drawing.Point(11, 5);
             this.addAgentBtn.Name = "addAgentBtn";
             this.addAgentBtn.Size = new System.Drawing.Size(200, 42);
-            this.addAgentBtn.TabIndex = 0;
+            this.addAgentBtn.TabIndex = 4;
             this.addAgentBtn.Text = "Добавить";
             this.addAgentBtn.UseVisualStyleBackColor = false;
             this.addAgentBtn.Click += new System.EventHandler(this.addAgentBtn_Click);
@@ -257,7 +268,7 @@
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(0, 150);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(1216, 584);
+            this.ContentPanel.Size = new System.Drawing.Size(1263, 584);
             this.ContentPanel.TabIndex = 2;
             // 
             // agentCardsLayout
@@ -266,7 +277,7 @@
             this.agentCardsLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.agentCardsLayout.Location = new System.Drawing.Point(0, 0);
             this.agentCardsLayout.Name = "agentCardsLayout";
-            this.agentCardsLayout.Size = new System.Drawing.Size(1216, 584);
+            this.agentCardsLayout.Size = new System.Drawing.Size(1263, 584);
             this.agentCardsLayout.TabIndex = 0;
             // 
             // MainForm
@@ -274,7 +285,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1216, 788);
+            this.ClientSize = new System.Drawing.Size(1263, 788);
             this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.FooterPanel);
             this.Controls.Add(this.HeaderPanel);
@@ -285,6 +296,8 @@
             this.Text = "Главная форма";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.FooterPanel.ResumeLayout(false);
@@ -315,6 +328,7 @@
         public System.Windows.Forms.Label prevPageLbl;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button changePriorityBtn;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

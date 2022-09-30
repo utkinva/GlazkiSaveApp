@@ -233,7 +233,7 @@
             this.titleTextBox.Location = new System.Drawing.Point(16, 46);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(220, 33);
-            this.titleTextBox.TabIndex = 20;
+            this.titleTextBox.TabIndex = 0;
             // 
             // changeLogoBtn
             // 
@@ -244,7 +244,7 @@
             this.changeLogoBtn.Location = new System.Drawing.Point(517, 300);
             this.changeLogoBtn.Name = "changeLogoBtn";
             this.changeLogoBtn.Size = new System.Drawing.Size(250, 42);
-            this.changeLogoBtn.TabIndex = 21;
+            this.changeLogoBtn.TabIndex = 9;
             this.changeLogoBtn.Text = "Выбрать";
             this.changeLogoBtn.UseVisualStyleBackColor = false;
             this.changeLogoBtn.Click += new System.EventHandler(this.changeLogoBtn_Click);
@@ -258,7 +258,7 @@
             this.saveBtn.Location = new System.Drawing.Point(12, 496);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(250, 42);
-            this.saveBtn.TabIndex = 21;
+            this.saveBtn.TabIndex = 10;
             this.saveBtn.Text = "Сохранить";
             this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
@@ -272,7 +272,7 @@
             this.cancelBtn.Location = new System.Drawing.Point(996, 496);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(250, 42);
-            this.cancelBtn.TabIndex = 21;
+            this.cancelBtn.TabIndex = 14;
             this.cancelBtn.Text = "Отменить";
             this.cancelBtn.UseVisualStyleBackColor = false;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
@@ -285,7 +285,7 @@
             this.phoneMaskedTextBox.Mask = "+7 000 000 00 00";
             this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(220, 33);
-            this.phoneMaskedTextBox.TabIndex = 22;
+            this.phoneMaskedTextBox.TabIndex = 5;
             // 
             // agentTypeIDComboBox
             // 
@@ -312,7 +312,7 @@
             this.priorityNumericUpDown.Location = new System.Drawing.Point(276, 267);
             this.priorityNumericUpDown.Name = "priorityNumericUpDown";
             this.priorityNumericUpDown.Size = new System.Drawing.Size(217, 33);
-            this.priorityNumericUpDown.TabIndex = 24;
+            this.priorityNumericUpDown.TabIndex = 7;
             // 
             // iNNMaskedTextBox
             // 
@@ -322,7 +322,7 @@
             this.iNNMaskedTextBox.Mask = "0000000000";
             this.iNNMaskedTextBox.Name = "iNNMaskedTextBox";
             this.iNNMaskedTextBox.Size = new System.Drawing.Size(220, 33);
-            this.iNNMaskedTextBox.TabIndex = 25;
+            this.iNNMaskedTextBox.TabIndex = 1;
             // 
             // kPPMaskedTextBox
             // 
@@ -332,7 +332,7 @@
             this.kPPMaskedTextBox.Mask = "000000000";
             this.kPPMaskedTextBox.Name = "kPPMaskedTextBox";
             this.kPPMaskedTextBox.Size = new System.Drawing.Size(220, 33);
-            this.kPPMaskedTextBox.TabIndex = 26;
+            this.kPPMaskedTextBox.TabIndex = 3;
             // 
             // deleteBtn
             // 
@@ -343,7 +343,7 @@
             this.deleteBtn.Location = new System.Drawing.Point(268, 496);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(250, 42);
-            this.deleteBtn.TabIndex = 21;
+            this.deleteBtn.TabIndex = 11;
             this.deleteBtn.Text = "Удалить";
             this.deleteBtn.UseVisualStyleBackColor = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
@@ -366,6 +366,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(473, 323);
             this.dataGridView.TabIndex = 27;
+            this.dataGridView.TabStop = false;
             // 
             // productIDDataGridViewTextBoxColumn
             // 
@@ -414,9 +415,10 @@
             this.addSaleBtn.Location = new System.Drawing.Point(773, 348);
             this.addSaleBtn.Name = "addSaleBtn";
             this.addSaleBtn.Size = new System.Drawing.Size(212, 42);
-            this.addSaleBtn.TabIndex = 21;
+            this.addSaleBtn.TabIndex = 12;
             this.addSaleBtn.Text = "+";
             this.addSaleBtn.UseVisualStyleBackColor = false;
+            this.addSaleBtn.Click += new System.EventHandler(this.addSaleBtn_Click);
             // 
             // deleteSaleBtn
             // 
@@ -427,7 +429,7 @@
             this.deleteSaleBtn.Location = new System.Drawing.Point(1034, 348);
             this.deleteSaleBtn.Name = "deleteSaleBtn";
             this.deleteSaleBtn.Size = new System.Drawing.Size(212, 42);
-            this.deleteSaleBtn.TabIndex = 21;
+            this.deleteSaleBtn.TabIndex = 13;
             this.deleteSaleBtn.Text = "-";
             this.deleteSaleBtn.UseVisualStyleBackColor = false;
             this.deleteSaleBtn.Click += new System.EventHandler(this.deleteSaleBtn_Click);
@@ -466,6 +468,7 @@
             this.Controls.Add(priorityLabel);
             this.Controls.Add(titleLabel);
             this.Controls.Add(this.titleTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEditAgentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -44,12 +44,12 @@ namespace GlazkiSaveApp.Views
             try
             {
                 DBContext.Context.SaveChanges();
-                MessageBox.Show("Данные успешно сохранены", "Выполнено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Данные успешно сохранены.", "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Ошибка\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

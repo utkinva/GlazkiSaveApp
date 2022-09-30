@@ -56,3 +56,4 @@ C:\Users\315\source\repos\GGlazki\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.csproj.C
 C:\Users\315\source\repos\GGlazki\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.exe
 C:\Users\315\source\repos\GGlazki\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.pdb
 C:\Users\315\source\repos\GGlazki\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.Views.ChangePriorityForm.resources
+C:\Users\315\source\repos\GGlazki\GlazkiSaveApp\obj\Debug\GlazkiSaveApp.Views.AddNewSaleForm.resources
