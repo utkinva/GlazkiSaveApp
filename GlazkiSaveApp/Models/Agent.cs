@@ -88,7 +88,7 @@ namespace GlazkiSaveApp.Models
                 {
                     if (sale.SaleDate.Year == DateTime.Now.Year
                         || (sale.SaleDate.Year == DateTime.Now.Year - 1
-                        && sale.SaleDate.Month <= DateTime.Now.Month)
+                        && sale.SaleDate.Month <= DateTime.Now.Month))
                     {
                         salesQtyLastYear += sale.ProductCount;
                     }
